@@ -1,7 +1,7 @@
 <template>
     <Box>
         <div class="columns">
-            <div class="column is-7">
+            <div class="column is-7 descricao">
                 {{ task.descricao || 'Tarefa sem descricao' }}
             </div>
             <div class="column">
@@ -31,3 +31,10 @@ export default defineComponent({
     }
 })
 </script>
+
+<style scoped>
+    .descricao{
+        font-weight: 600;
+        color: var(--texto-primario)
+    }
+</style>

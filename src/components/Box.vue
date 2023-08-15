@@ -14,6 +14,6 @@ export default defineComponent({
 
 <style scoped>
 .box {
-    background-color: #FAF0CA;
+    background-color: var(--bg-box);
 }
 </style>

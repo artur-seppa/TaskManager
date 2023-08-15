@@ -71,11 +71,13 @@ export default defineComponent({
 main {
   --bg-primario: #fff;
   --texto-primario: #000;
+  --bg-box: #FAF0CA;
 }
 
 main.modo-escuro{
   --bg-primario: #2b2d42;
   --texto-primario: #ddd;
+  --bg-box: tomato;
 }
 
 .conteudo{
