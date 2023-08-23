@@ -9,13 +9,7 @@
       <BarraLateral @aoTemaAlterado="alterarTema"/>
     </div>
     <div class="column is-three-quarter conteudo">
-      <Formulario @aoSalvarTarefa="salvarTarefa" />
-      <div class="lista">
-        <Tarefa v-for="(task, index) in tarefas" :key="index" :task="task" />
-        <Box v-if="verificaLista == 0">
-          Você não esta muito produtivo hoje :(
-        </Box>
-      </div>
+      <RouterView></RouterView>
     </div>
   </main>
 </template>
@@ -28,35 +22,18 @@
 */
 import { defineComponent } from 'vue';
 import BarraLateral from './components/BarraLateral.vue';
-import Formulario from './components/Formulario.vue';
-import Tarefa from './components/Tarefa.vue';
-import ITarefa from './interfaces/ITarefa';
-import Box from './components/Box.vue'
 
 export default defineComponent({
   name: 'App',
   components: {
-    BarraLateral,
-    Formulario,
-    Tarefa,
-    Box
+    BarraLateral
   },
   data() {
     return {
-      tarefas: [] as ITarefa[],
       modoEscuro: false
     }
   },
-  computed: {
-    verificaLista(): number {
-      return this.tarefas.length;
-    }
-  },
   methods: {
-    salvarTarefa(task: ITarefa) {
-      this.tarefas.push(task);
-    },
-
     alterarTema (modoEscuro: boolean) {
       this.modoEscuro = modoEscuro
     }

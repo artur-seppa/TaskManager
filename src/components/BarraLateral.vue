@@ -15,6 +15,20 @@
             Task Manager
         </h2>
         <br>
+        <nav class="panel mt-5">
+            <ul>
+                <li>
+                    <router-link to="/" class="link">
+                        <i class="fas fa-tasks"></i> Tarefas
+                    </router-link>
+                </li>
+                <li>
+                    <router-link to="/projetos" class="link">
+                        <i class="fas fa-project-diagram"></i> Projetos
+                    </router-link>
+                </li>
+            </ul>
+        </nav>
         <button v-html="textoBotao" class="title is-4 button is-rounded" :class="{ 'is-dark': !modeEscuro }"
             @click="alterarTema">
         </button>
@@ -75,5 +89,21 @@ img {
         padding: 2.5rem;
         height: auto;
     }
+}
+
+.panel li {
+    margin: 8px 0px;
+}
+
+.link{
+    color: #fff;
+}
+
+.link:hover{
+    color: #FAC0CA;
+}
+
+.link.hover-link-active{
+    color: #FAC0CA;
 }
 </style>
