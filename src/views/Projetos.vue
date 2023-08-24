@@ -1,31 +1,31 @@
 <template>
     <section class="projetos">
         <h1 class="title">Projetos</h1>
-
-        <form @submit.prevent="salvar">
-            <div class="field">
-                <label for="nomeProjeto" class="label">
-                    Nome do Projeto
-                </label>
-                <input type="text" class="input" v-model="nomeProjeto" id="nomeProjeto">
-            </div>
-            <div class="field">
-                <button class="button" type="submit">
-                    Salvar
-                </button>
-            </div>
-        </form>
+        <router-link to="/projetos/novo" class="button">
+            <span class="icon is-small">
+                <i class="fas fa-plus"></i>
+            </span>
+            <span>Novo Projeto</span>
+        </router-link>
         <table class="table is-fullwidth">
             <thead>
                 <tr>
                     <th>ID</th>
                     <th>Nome</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
                 <tr v-for="projeto in projetos" :key="projeto.id">
                     <td>{{ projeto.id }}</td>
                     <td>{{ projeto.nome }}</td>
+                    <td>
+                        <router-link :to="`/projetos/${projeto.id}`" class="button">
+                            <span class="icon is-small">
+                                <i class="fas fa-pencil-alt"></i>
+                            </span>
+                        </router-link>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -33,32 +33,23 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import IProjeto from '../interfaces/IProjeto';
+import { computed, defineComponent } from 'vue';
+import { useStore } from 'vuex';
+import { key } from '@/store';
 
 export default defineComponent({
     name: 'ProjetosView',
-    data () {
+    setup() {
+        const store = useStore(key)
         return {
-            nomeProjeto: "",
-            projetos: [] as IProjeto[]
-        }
-    },
-    methods: {
-        salvar () {
-            const projeto: IProjeto = {
-                nome: this.nomeProjeto,
-                id: new Date().toISOString()
-            }
-            this.projetos.push(projeto)
-            this.nomeProjeto = '' 
+            projetos: computed(() => store.state.projetos)
         }
     }
 })
 </script>
 
 <style scoped>
-    .projetos{
-        padding: 1.25rem;
-    }
+.projetos {
+    padding: 1.25rem;
+}
 </style>

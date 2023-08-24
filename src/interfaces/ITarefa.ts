@@ -1,4 +1,7 @@
+import IProjeto from "./IProjeto";
+
 export default interface ITarefa{
     tempoDecorrido: number,
-    descricao: String
+    descricao: String,
+    projeto: IProjeto
 }
